@@ -11,5 +11,6 @@ def index() -> str:
     '''create a flask route to render a template'''
     return render_template('0-index.html')
 
+
 if __name__ == '__main__':
     app.run()
