@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''create a basic flask app'''
 from flask_babel import Babel
-from typing import Dict
+from typing import Dict, Union
 from flask import render_template, Flask, request, g
 
 
