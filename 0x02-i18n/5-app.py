@@ -36,17 +36,13 @@ users = {
         }
 
 
-def get_user(id: int = None) -> Dict:
+def get_user() -> Union[Dict, None]:
     '''get a user if the id is passed or if the login_as request parameter
     is passed
-
-    -Parameter:
-    id (int): the id of the user
 
     Return:
     A user dict or None'''
     user_id = int(request.args.get('login_as'))
-    user_id = user_id or id
     return user.get(user_id)
 
 
