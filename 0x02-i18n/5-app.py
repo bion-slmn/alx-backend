@@ -45,7 +45,7 @@ def get_user(id: int = None) -> Dict:
 
     Return:
     A user dict or None'''
-    user_id = request.args.get('login_as')
+    user_id = int(request.args.get('login_as'))
     user_id = user_id or id
     return user.get(user_id)
 
@@ -54,8 +54,7 @@ def get_user(id: int = None) -> Dict:
 def before_request() -> None:
     '''get a user and set the user as a global variable'''
     login_user = get_user()
-    if login_user:
-        g.user = login_user
+    g.user = login_user
 
 
 @app.route('/')
