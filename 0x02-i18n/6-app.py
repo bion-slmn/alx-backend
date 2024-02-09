@@ -57,8 +57,10 @@ def get_user() -> Union[Dict, None]:
 
     Return:
     A user dict or None'''
-    user_id = int(request.args.get('login_as'))
-    return user.get(user_id)
+    user_id = request.args.get('login_as')
+    if user_id:
+        user_id = int(user_id)
+    return users.get(user_id)
 
 
 @app.before_request
