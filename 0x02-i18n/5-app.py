@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''create a basic flask app'''
+'''defines code for internationalisationof a flask  app'''
 from flask_babel import Babel
 from typing import Dict, Union
 from flask import render_template, Flask, request, g
@@ -21,7 +21,10 @@ app.config.from_object(Config)
 
 @babel.localeselector
 def get_locale() -> str:
-    '''selecte teh best matching language for a given locale'''
+    '''selecte teh best matching language for a given locale
+    Return
+    string repreenting the locale
+    '''
     locale = request.args.get("locale")
     if locale and locale in Config.LANGUAGES:
         return locale
@@ -42,8 +45,10 @@ def get_user() -> Union[Dict, None]:
 
     Return:
     A user dict or None'''
-    user_id = int(request.args.get('login_as'))
-    return user.get(user_id)
+    user_id = request.args.get('login_as')
+    if user_id:
+        user_id = int(user_id)
+    return users.get(user_id)
 
 
 @app.before_request
